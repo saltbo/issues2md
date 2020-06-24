@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./
         with:
-          who-to-greet: 'Mona the Octocat'
+          dist: 'docs'
