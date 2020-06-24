@@ -2,7 +2,8 @@
 const path = require('path');
 const core = require('@actions/core');
 const github = require('@actions/github');
-const octokit = github.getOctokit("myToken")
+const ghToken = core.getInput('ghToken');
+const octokit = github.getOctokit(ghToken)
 
 // most @actions toolkit packages have async methods
 async function run() {
