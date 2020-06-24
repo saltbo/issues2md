@@ -15,3 +15,4 @@ jobs:
       - uses: ./
         with:
           dist: 'docs'
+          ghToken: ${{ secrets.GITHUB_TOKEN }}
