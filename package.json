@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/index.js",
-    "package": "ncc build src/index.js -o dist",
-    "act": "cp -r dist issues2md-action/dist && act"
+    "package": "ncc build src/index.js -o dist"
   },
   "repository": {
     "type": "git",
