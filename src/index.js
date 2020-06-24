@@ -2,14 +2,12 @@
 const path = require('path');
 const core = require('@actions/core');
 const github = require('@actions/github');
-const ghToken = core.getInput('ghToken');
-const octokit = github.getOctokit(ghToken)
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
     const dist = core.getInput('dist');
-    core.debug(`ISSUES_DIST = '${dist}'`)
+    core.debug(`ISSUES_DIST = '${dist}'`);
 
     // GitHub workspace
     let githubWorkspacePath = process.env['GITHUB_WORKSPACE']
@@ -19,6 +17,8 @@ async function run() {
     githubWorkspacePath = path.resolve(githubWorkspacePath)
     core.debug(`GITHUB_WORKSPACE = '${githubWorkspacePath}'`)
 
+    const ghToken = core.getInput('ghToken');
+    const octokit = github.getOctokit(ghToken);
     const { data: issues } = await octokit.issues.listForRepo({
       owner: 'saltbo',
       repo: 'blog',
