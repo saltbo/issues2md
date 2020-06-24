@@ -10,6 +10,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - uses: ./
         with:
           who-to-greet: 'Mona the Octocat'
