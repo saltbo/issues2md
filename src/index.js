@@ -18,6 +18,7 @@ async function run() {
     core.debug(`GITHUB_WORKSPACE = '${githubWorkspacePath}'`)
 
     const ghToken = core.getInput('ghToken');
+    console.log(ghToken)
     const octokit = github.getOctokit(ghToken);
     const { data: issues } = await octokit.issues.listForRepo({
       owner: 'saltbo',
