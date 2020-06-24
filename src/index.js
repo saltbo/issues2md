@@ -36,7 +36,7 @@ async function run() {
     });
 
     issues.forEach(ele => {
-      let header = `---\ntitle: "${ele.title}"\nauthor: ${ele.user.login}\ndate: ${ele.created_at}\n---\n`
+      let header = `---\ntitle: "${ele.title}"\nauthor: ${ele.user.login}\ndate: ${ele.created_at}\neditLink: false\n---\n`
       let file = path.join(issuesDir, ele.number+'.md'); 
       fs.writeFile(file, header+ele.body, (err) => {
           if(err){
