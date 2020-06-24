@@ -8,10 +8,7 @@ inputs:
   ghToken:  # id of input
     description: 'GITHUB_TOKEN'
     required: true
-    default: ${{ secrets.GITHUB_TOKEN }}
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
