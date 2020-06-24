@@ -1,0 +1,35 @@
+{
+  "name": "issues2md-action",
+  "version": "1.0.0",
+  "description": "Fetch and convert the issues to the markdown documents",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/index.js",
+    "package": "ncc build src/index.js -o dist",
+    "act": "cp -r dist issues2md-action/dist && act"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actions/javascript-action.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "GitHub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/actions/javascript-action/issues"
+  },
+  "homepage": "https://github.com/actions/javascript-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.1.1",
+    "@actions/github": "^3.0.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.20.5",
+    "eslint": "^6.3.0",
+    "jest": "^24.9.0"
+  }
+}

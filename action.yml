@@ -1,0 +1,13 @@
+name: 'Issues2md'
+description: 'Fetch and convert the issues to the markdown documents'
+inputs:
+  dist:  # id of input
+    description: 'dist path of the issues'
+    required: true
+    default: 'docs/issues'
+outputs:
+  time: # output will be available to future steps 
+    description: 'The message to output'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
