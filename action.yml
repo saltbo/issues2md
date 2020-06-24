@@ -5,6 +5,10 @@ inputs:
     description: 'dist path of the issues'
     required: true
     default: 'docs/issues'
+  ghToken:  # id of input
+    description: 'GITHUB_TOKEN'
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
 outputs:
   time: # output will be available to future steps 
     description: 'The message to output'
