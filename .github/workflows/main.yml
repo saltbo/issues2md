@@ -14,5 +14,7 @@ jobs:
       - run: yarn && yarn package
       - uses: ./
         with:
-          dist: 'docs'
-          ghToken: ${{ secrets.GITHUB_TOKEN }}
+          repo: saltbo/blog
+          dist: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

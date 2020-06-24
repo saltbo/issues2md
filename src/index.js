@@ -6,28 +6,33 @@ const github = require('@actions/github');
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    let dist = core.getInput('dist');
-    core.debug(`ISSUES_DIST = '${dist}'`);
+    var repo = core.getInput('repo');
+    var dist = core.getInput('dist');
+    var [owner, repo] = repo.split('/');
+    core.info(`GITHUB_OWNER = '${owner}'`);
+    core.info(`GITHUB_REPO = '${repo}'`);
+    core.info(`ISSUES_DIST = '${dist}'`);
 
-    // GitHub workspace
-    let githubWorkspacePath = process.env['GITHUB_WORKSPACE']
-    if (!githubWorkspacePath) {
+    let ghToken = process.env['GITHUB_TOKEN']
+    if (!ghToken) {
+      throw new Error('GITHUB_TOKEN not defined')
+    }
+    let ghWorkspacePath = process.env['GITHUB_WORKSPACE']
+    if (!ghWorkspacePath) {
       throw new Error('GITHUB_WORKSPACE not defined')
     }
-    githubWorkspacePath = path.resolve(githubWorkspacePath)
-    core.debug(`GITHUB_WORKSPACE = '${githubWorkspacePath}'`)
+    ghWorkspacePath = path.resolve(ghWorkspacePath)
+    core.info(`GITHUB_WORKSPACE = '${ghWorkspacePath}'`)
 
-    let issuesDir = path.join(githubWorkspacePath, dist); 
+    let issuesDir = path.join(ghWorkspacePath, dist); 
     if (!fs.existsSync(issuesDir)) {
       fs.mkdirSync(issuesDir)
     }
 
-    const ghToken = core.getInput('ghToken');
     const octokit = github.getOctokit(ghToken);
     const { data: issues } = await octokit.issues.listForRepo({
-      owner: 'saltbo',
-      repo: 'blog',
-      labels: ['DAQ'],
+      owner,
+      repo,
     });
 
     issues.forEach(ele => {

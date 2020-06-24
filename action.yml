@@ -1,13 +1,13 @@
 name: 'Issues2md'
 description: 'Fetch and convert the issues to the markdown documents'
 inputs:
-  dist:  # id of input
+  repo:
+    description: 'github repo. eg: saltbo/blog'
+    required: true
+  dist:
     description: 'dist path of the issues'
     required: true
     default: 'docs/issues'
-  ghToken:  # id of input
-    description: 'GITHUB_TOKEN'
-    required: true
 
 runs:
   using: 'node12'
