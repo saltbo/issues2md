@@ -1,7 +1,7 @@
 # issues2md
 
 <p align="left">
-  <a href="https://github.com/saltbo/issues2md/actions"><img alt="GitHub Actions status" src="https://github.com/actions/setup-go/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/saltbo/issues2md/actions"><img alt="GitHub Actions status" src="https://github.com/saltbo/issues2md/workflows/build/badge.svg"></a>
 </p>
 
 This action pull and convert issues to markdown documents for use in actions by:
@@ -28,7 +28,3 @@ steps:
 # License
 
 The scripts and documentation in this project are released under the [MIT License](LICENSE)
-
-## Code of Conduct
-
-:wave: Be nice.  See [our code of conduct](CONDUCT)
