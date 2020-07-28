@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/index.js",
-    "package": "ncc build src/index.js -o dist"
+    "build": "ncc build src/index.js -o dist"
   },
   "repository": {
     "type": "git",
