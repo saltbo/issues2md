@@ -24,7 +24,7 @@ async function run() {
     ghWorkspacePath = path.resolve(ghWorkspacePath)
     core.info(`GITHUB_WORKSPACE = '${ghWorkspacePath}'`)
 
-    let issuesDir = path.join(ghWorkspacePath, dist); 
+    let issuesDir = path.join(ghWorkspacePath, dist);
     if (!fs.existsSync(issuesDir)) {
       fs.mkdirSync(issuesDir)
     }
@@ -36,14 +36,15 @@ async function run() {
     });
 
     issues.forEach(ele => {
-      let header = `---\ntitle: "${ele.title}"\nauthor: ${ele.user.login}\ndate: ${ele.created_at}\neditLink: false\n---\n`
-      let file = path.join(issuesDir, ele.number+'.md'); 
-      fs.writeFile(file, header+ele.body, (err) => {
-          if(err){
-            throw err
-          }
+      let labels = ele.labels.map(label => { return label.name })
+      let header = `---\ntitle: "${ele.title}"\nauthor: ${ele.user.login}\nlabels: ${labels}\ndate: ${ele.created_at}\neditLink: false\n---\n`
+      let file = path.join(issuesDir, ele.number + '.md');
+      fs.writeFile(file, header + ele.body, (err) => {
+        if (err) {
+          throw err
+        }
 
-          core.info(`issue#${ele.number} -> ${file}`)
+        core.info(`issue#${ele.number} -> ${file}`)
       });
     });
 
