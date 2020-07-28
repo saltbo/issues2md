@@ -6934,7 +6934,7 @@ async function run() {
 
     issues.forEach(ele => {
       let labels = ele.labels.map(label => { return label.name })
-      let header = `---\ntitle: #${ele.number} ->  "${ele.title}"\nauthor: ${ele.user.login}\nlabels: [${labels}]\ndate: ${ele.created_at}\neditLink: false\n---\n`
+      let header = `---\ntitle: #"${ele.number} -> ${ele.title}"\nauthor: "${ele.user.login}"\nlabels: [${labels}]\ndate: ${ele.created_at}\neditLink: false\n---\n`
       let file = path.join(issuesDir, ele.number + '.md');
       fs.writeFile(file, header + ele.body, (err) => {
         if (err) {
